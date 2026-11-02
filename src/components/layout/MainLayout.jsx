@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
-import ShopNavbar from "./ShopNavbar";
+import ShopNavbar from "../layout/Shopnavbar";
 import Footer from "../shared/Footer";
 import FloatingActions from "../shared/FloatingActions";
-import MiniCart from "../shared/MiniCart";
+import MiniCart from "../shared/Minicart";
 import { useCart } from "../../context/CartContext";
 
 // Home পেজে Navbar, বাকি সব পেজে ShopNavbar

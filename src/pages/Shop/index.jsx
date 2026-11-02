@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Container } from "../../components/ui";
-import PageHeader from "../../components/shared/PageHeader";
+import PageHeader from "../../components/shared/Pageheader";
 import ProductTile from "../../components/shared/ProductTile";
 import Pagination from "../../components/shared/Pagination";
 import FilterSidebar from "./component/FilterSidebar";
