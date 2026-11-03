@@ -4,7 +4,7 @@ import NewArrivals from "../Home/component/Newarrivals";
 import FeaturedSlider from "../../components/shared/Featuredslider";
 import ProductSpotlight from "../../components/shared/ProductSpotlight";
 import spotlight from "../../assets/spotlight.png";
-import Features from "../../components/shared/features";
+import Features from "../../components/shared/Features";
 import Gallery from "../../components/shared/Gallery";
 import Testimonials from "./component/Testimonials";
 import Subscribe from "../../components/shared/Subscribe";
