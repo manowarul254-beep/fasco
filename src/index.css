@@ -1,10 +1,98 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Volkhov:wght@400;700&display=swap");
+
 @import "tailwindcss";
 
+/* =====================================
+   GLOBAL THEME COLORS
+===================================== */
+
+:root {
+  color-scheme: light;
+
+  --page: #f7f6fc;
+  --surface: #ffffff;
+  --surface-secondary: #eeebf8;
+
+  --brand: #19172b;
+  --muted: #55536b;
+
+  --border: #e5e2ef;
+
+  --accent: #713ce7;
+  --accent-secondary: #4563e8;
+  --accent-cyan: #06b6d4;
+
+  --text-soft: #77758a;
+
+  --gradient-primary: linear-gradient(
+    110deg,
+    #7c3aed,
+    #4563e8,
+    #06b6d4
+  );
+
+  --gradient-background: linear-gradient(
+    135deg,
+    #f7f6fc,
+    #eeebf8,
+    #f0f5ff
+  );
+
+  --shadow-theme: 0 10px 35px rgba(50, 35, 100, 0.08);
+}
+
+/* =====================================
+   DARK THEME
+===================================== */
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --page: #0b1020;
+  --surface: #17152e;
+  --surface-secondary: #20243b;
+
+  --brand: #f8f7ff;
+  --muted: #e1def5;
+
+  --border: #34324d;
+
+  --accent: #a78bfa;
+  --accent-secondary: #818cf8;
+  --accent-cyan: #22d3ee;
+
+  --text-soft: #b9b8d0;
+
+  --gradient-primary: linear-gradient(
+    110deg,
+    #9333ea,
+    #4f46e5,
+    #0891b2
+  );
+
+  --gradient-background: linear-gradient(
+    135deg,
+    #0b1020,
+    #17152e,
+    #10243b
+  );
+
+  --shadow-theme: 0 10px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* =====================================
+   TAILWIND THEME TOKENS
+===================================== */
+
 @theme {
-  --color-page: #F5F5F5;
-  --color-brand: #000000;
-  --color-muted: #484848;
+  --color-page: var(--page);
+  --color-brand: var(--brand);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
 
   --font-sans: "Poppins", sans-serif;
   --font-heading: "Volkhov", serif;
@@ -12,17 +100,82 @@
   --container-site: 1281px;
 }
 
+/* =====================================
+   GLOBAL BODY
+===================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply bg-page font-sans text-brand antialiased;
+
+  background: var(--gradient-background);
+  color: var(--brand);
+  transition:
+    background 0.35s ease,
+    color 0.35s ease;
 }
+
+#root {
+  min-height: 100vh;
+}
+
+/* =====================================
+   REUSABLE THEME CLASSES
+===================================== */
+
+.theme-surface {
+  background: var(--surface);
+  color: var(--brand);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.theme-card {
+  background: var(--surface);
+  color: var(--brand);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-theme);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.theme-border {
+  border-color: var(--border);
+}
+
+.theme-text {
+  color: var(--brand);
+}
+
+.theme-muted {
+  color: var(--text-soft);
+}
+
+.gradient-primary {
+  background: var(--gradient-primary);
+  color: #ffffff;
+}
+
+.gradient-text {
+  background: var(--gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* =====================================
+   TEXT OUTLINE
+===================================== */
 
 .text-outline {
   color: transparent;
-  -webkit-text-stroke: 1px #484848;
+  -webkit-text-stroke: 1px var(--muted);
 }
 
-
-/* Global Scroll Reveal Animation */
+/* =====================================
+   GLOBAL SCROLL REVEAL
+===================================== */
 
 .scroll-reveal {
   opacity: 0;
@@ -37,12 +190,182 @@ body {
   transform: translateY(0);
 }
 
-/* Accessibility: Reduce motion when requested */
+/* =====================================
+   ACCESSIBILITY
+===================================== */
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .scroll-reveal {
     opacity: 1;
     transform: none;
     transition: none;
   }
 }
+
+/* ==========================================
+   GLOBAL DARK MODE COMPATIBILITY
+   Supports existing Tailwind color classes
+========================================== */
+
+/* Surfaces: existing white and pale backgrounds */
+[data-theme="dark"] .bg-white,
+[data-theme="dark"] .bg-gray-50,
+[data-theme="dark"] .bg-gray-100,
+[data-theme="dark"] .bg-gray-200,
+[data-theme="dark"] .bg-neutral-50,
+[data-theme="dark"] .bg-neutral-100,
+[data-theme="dark"] .bg-neutral-200,
+[data-theme="dark"] .bg-neutral-300,
+[data-theme="dark"] .bg-neutral-400,
+[data-theme="dark"] .bg-slate-50,
+[data-theme="dark"] .bg-slate-100,
+[data-theme="dark"] .bg-slate-200,
+[data-theme="dark"] .bg-zinc-50,
+[data-theme="dark"] .bg-zinc-100,
+[data-theme="dark"] .bg-zinc-200 {
+  background-color: var(--surface) !important;
+}
+
+/* Neutral dark surfaces */
+[data-theme="dark"] .bg-neutral-800,
+[data-theme="dark"] .bg-gray-800,
+[data-theme="dark"] .bg-slate-800,
+[data-theme="dark"] .bg-zinc-800 {
+  background-color: var(--surface-secondary) !important;
+}
+
+/* Existing black buttons/surfaces become the brand gradient */
+[data-theme="dark"] .bg-black {
+  background: var(--gradient-primary) !important;
+}
+
+/* Neutral gray backgrounds used for placeholders/image frames */
+[data-theme="dark"] [class*="bg-[#E0E0E0]"],
+[data-theme="dark"] [class*="bg-[#D9D9D9]"],
+[data-theme="dark"] [class*="bg-[#FAFAFA]"] {
+  background: var(--surface-secondary) !important;
+}
+
+/* Main text: dark text becomes readable light text */
+[data-theme="dark"] .text-black,
+[data-theme="dark"] .text-gray-900,
+[data-theme="dark"] .text-gray-800,
+[data-theme="dark"] .text-gray-700,
+[data-theme="dark"] .text-gray-600,
+[data-theme="dark"] .text-neutral-900,
+[data-theme="dark"] .text-neutral-800,
+[data-theme="dark"] .text-neutral-700,
+[data-theme="dark"] .text-neutral-600,
+[data-theme="dark"] .text-slate-900,
+[data-theme="dark"] .text-slate-800,
+[data-theme="dark"] .text-slate-700,
+[data-theme="dark"] .text-slate-600,
+[data-theme="dark"] .text-zinc-900,
+[data-theme="dark"] .text-zinc-800,
+[data-theme="dark"] .text-zinc-700,
+[data-theme="dark"] .text-zinc-600,
+[data-theme="dark"] [class*="text-[#3a3a3a]"],
+[data-theme="dark"] [class*="text-[#4a4a4a]"] {
+  color: var(--brand) !important;
+}
+
+/* Secondary text becomes soft readable gray */
+[data-theme="dark"] .text-gray-500,
+[data-theme="dark"] .text-gray-400,
+[data-theme="dark"] .text-neutral-500,
+[data-theme="dark"] .text-neutral-400,
+[data-theme="dark"] .text-slate-500,
+[data-theme="dark"] .text-slate-400,
+[data-theme="dark"] .text-zinc-500,
+[data-theme="dark"] .text-zinc-400 {
+  color: var(--text-soft) !important;
+}
+
+/* Borders */
+[data-theme="dark"] .border-black,
+[data-theme="dark"] .border-gray-100,
+[data-theme="dark"] .border-gray-200,
+[data-theme="dark"] .border-gray-300,
+[data-theme="dark"] .border-neutral-100,
+[data-theme="dark"] .border-neutral-200,
+[data-theme="dark"] .border-neutral-300,
+[data-theme="dark"] .border-neutral-400,
+[data-theme="dark"] .border-neutral-500,
+[data-theme="dark"] .border-slate-200,
+[data-theme="dark"] .border-slate-300,
+[data-theme="dark"] .border-zinc-200,
+[data-theme="dark"] .border-zinc-300 {
+  border-color: var(--border) !important;
+}
+
+/* Hover surfaces */
+[data-theme="dark"] .hover\:bg-neutral-50:hover,
+[data-theme="dark"] .hover\:bg-gray-50:hover,
+[data-theme="dark"] .hover\:bg-white:hover {
+  background-color: var(--surface-secondary) !important;
+}
+
+/* Focus rings */
+[data-theme="dark"] .ring-black {
+  --tw-ring-color: var(--accent) !important;
+}
+
+[data-theme="dark"] .accent-black {
+  accent-color: var(--accent) !important;
+}
+
+[data-theme="dark"] .hover\\:text-black:hover {
+  color: var(--accent) !important;
+}
+
+[data-theme="dark"] .border-black\\/10 {
+  border-color: var(--border) !important;
+}
+
+/* Inputs and placeholders */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  color: var(--brand);
+  border-color: var(--border);
+  background-color: var(--surface);
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: var(--text-soft) !important;
+}
+
+/* Ensure icons and ordinary text inherit the active theme */
+body {
+  color: var(--brand);
+}
+
+[data-theme="dark"] main,
+[data-theme="dark"] footer {
+  color: var(--brand);
+}
+
+/* Theme transitions */
+body,
+header,
+main,
+footer,
+section,
+article,
+aside,
+nav,
+button,
+input,
+textarea,
+select,
+.theme-card,
+.theme-surface {
+  transition-property: background-color, color, border-color, box-shadow;
+  transition-duration: 300ms;
+}
+
