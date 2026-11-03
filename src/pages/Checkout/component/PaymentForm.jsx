@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { CreditCard, Lock } from "lucide-react";
 import { Input } from "../../../components/ui";
@@ -8,54 +9,87 @@ import { boxInput } from "./fieldStyle";
 
 const methods = ["Credit Card", "Cash on Delivery"];
 
-// পেমেন্ট। ডেমো: কার্ডের তথ্য কোথাও সংরক্ষণ বা পাঠানো হয় না।
-// আসল পেমেন্টের জন্য Stripe-এর মতো সেবার নিজস্ব ফর্ম ব্যবহার করতে হবে।
 const PaymentForm = () => {
   const [method, setMethod] = useState("Credit Card");
 
   return (
     <FormSection title="Payment">
-      <SelectField
-        name="method"
-        value={method}
-        onChange={(e) => setMethod(e.target.value)}
-        options={methods}
-        leftIcon={
-          method === "Credit Card" && (
-            <span className="flex h-6 w-10 items-center justify-center rounded bg-[#0A2C5E] text-white">
-              <CreditCard size={14} />
-            </span>
-          )
-        }
-      />
+      <div className="w-full min-w-0 max-w-full">
+        <SelectField
+          name="method"
+          value={method}
+          onChange={(e) => setMethod(e.target.value)}
+          options={methods}
+          leftIcon={
+            method === "Credit Card" && (
+              <span className="flex h-6 w-10 shrink-0 items-center justify-center rounded bg-[#0A2C5E] text-white">
+                <CreditCard size={14} />
+              </span>
+            )
+          }
+        />
 
-      {method === "Credit Card" && (
-        <div className="bg-neutral-100 p-4">
-          <div className="flex flex-col gap-3">
-            <div className="relative">
-              <Input
-                name="cardNumber"
-                placeholder="Card Number"
-                inputMode="numeric"
-                autoComplete="cc-number"
-                className={boxInput}
-              />
-              <Lock size={18} className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-neutral-500" />
-            </div>
+        {method === "Credit Card" && (
+          <div className="mt-3 w-full min-w-0 max-w-full box-border bg-neutral-100 p-3 sm:p-4">
+            <div className="flex w-full min-w-0 flex-col gap-3">
+              {/* Card Number */}
+              <div className="relative w-full min-w-0">
+                <Input
+                  name="cardNumber"
+                  placeholder="Card Number"
+                  inputMode="numeric"
+                  autoComplete="cc-number"
+                  className={`${boxInput} !w-full !min-w-0 !max-w-full !box-border !pr-12`}
+                />
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              <Input name="expiry" placeholder="Expiration Date" autoComplete="cc-exp" className={boxInput} />
-              <Input name="cvc" placeholder="Security Code" inputMode="numeric" autoComplete="cc-csc" className={boxInput} />
-            </div>
+                <Lock
+                  size={18}
+                  className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-neutral-500"
+                />
+              </div>
 
-            <Input name="cardName" placeholder="Card Holder Name" autoComplete="cc-name" className={boxInput} />
+              {/* Expiration Date & Security Code */}
+              <div className="grid w-full min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
+                <div className="w-full min-w-0">
+                  <Input
+                    name="expiry"
+                    placeholder="Expiration Date"
+                    autoComplete="cc-exp"
+                    className={`${boxInput} !w-full !min-w-0 !max-w-full !box-border`}
+                  />
+                </div>
 
-            <div className="pt-2">
-              <CheckRow name="saveCard" label="Save This Info For Future" />
+                <div className="w-full min-w-0">
+                  <Input
+                    name="cvc"
+                    placeholder="Security Code"
+                    inputMode="numeric"
+                    autoComplete="cc-csc"
+                    className={`${boxInput} !w-full !min-w-0 !max-w-full !box-border`}
+                  />
+                </div>
+              </div>
+
+              {/* Card Holder Name */}
+              <div className="w-full min-w-0">
+                <Input
+                  name="cardName"
+                  placeholder="Card Holder Name"
+                  autoComplete="cc-name"
+                  className={`${boxInput} !w-full !min-w-0 !max-w-full !box-border`}
+                />
+              </div>
+
+              <div className="w-full min-w-0 pt-2">
+                <CheckRow
+                  name="saveCard"
+                  label="Save This Info For Future"
+                />
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </FormSection>
   );
 };
