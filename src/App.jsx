@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "./components/layout/MainLayout";
 import Home from "./pages/Home";
@@ -11,9 +12,13 @@ import ForgotPassword from "./pages/Auth/ForgotPassword";
 import ConfirmationCode from "./pages/Auth/ConfirmationCode";
 import NewPassword from "./pages/Auth/NewPassword";
 
+import GlobalScrollReveal from "./components/shared/GlobalScrollReveal";
+
 function App() {
   return (
     <BrowserRouter>
+      <GlobalScrollReveal />
+
       <Routes>
         {/* Navbar + Footer ওয়ালা পেজ */}
         <Route element={<MainLayout />}>
