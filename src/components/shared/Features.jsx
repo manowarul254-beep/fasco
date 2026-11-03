@@ -1,5 +1,5 @@
 import { HandHeart, BadgeCheck, Package, Headset } from "lucide-react";
-import Container from "../ui/container";
+import {Container} from "../ui";
 
 const features = [
   {

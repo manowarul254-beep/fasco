@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Container } from "../../../components/ui";
-import SectionHeader from "../../../components/shared/SectionHeader";
-import CategoryTabs from "../../../components/shared/CategoryTabs";
-import ProductCard from "../../../components/shared/ProductCard";
+import Sectionheader from "../../../components/shared/Sectionheader";
+import Categorytabs from "../../../components/shared/Categorytabs";
+import Productcard from "../../../components/shared/Productcard";
 import useProducts from "../../../hooks/useProducts";
 
 // categories: API-র ক্যাটাগরির নাম (dummyjson). এক ক্যাটাগরিতে ৫টার কম থাকলে একাধিক দিন, মিলিয়ে ৬টা দেখাবে।
@@ -33,13 +33,13 @@ const NewArrivals = ({
 
   return (
     <Container as="section" className="py-16 lg:py-20">
-      <SectionHeader title={title} description={description} />
+      <Sectionheader title={title} description={description} />
 
-      <CategoryTabs tabs={tabs} active={activeKey} onChange={setActiveKey} className="mt-12" />
+      <Categorytabs tabs={tabs} active={activeKey} onChange={setActiveKey} className="mt-12" />
 
       <div className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-[61px] lg:gap-y-[60px]">
         {loading && Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)}
-        {!loading && products.map((p) => <ProductCard key={p.id} product={p} />)}
+        {!loading && products.map((p) => <Productcard key={p.id} product={p} />)}
       </div>
 
       {error && <p className="mt-10 text-center text-red-500">{error}</p>}

@@ -4,7 +4,7 @@ import { Minus, Plus, X } from "lucide-react";
 import { useState } from "react";
 
 import { Button, Container } from "../../../components/ui";
-import PageHeader from "../../../components/shared/PageHeader";
+import Pageheader from "../../../components/shared/Pageheader";
 import Subscribe from "../../../components/shared/Subscribe";
 import { useCart } from "../../../context/CartContext";
 
@@ -23,7 +23,7 @@ const Cart = () => {
 
   return (
     <>
-      <PageHeader
+      <Pageheader
         title="Shopping Cart"
         crumbs={[
           { label: "Home", to: "/" },
