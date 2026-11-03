@@ -4,13 +4,12 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Shop/component/Cart";
-import Checkout from "./pages/Checkout/CheckoutPage";
+import Checkout from "./pages/Checkout";
 import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import ConfirmationCode from "./pages/Auth/ConfirmationCode";
 import NewPassword from "./pages/Auth/NewPassword";
-import CheckoutPage from "./pages/Checkout/CheckoutPage";
 
 function App() {
   return (
@@ -22,7 +21,7 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Route>
 
         {/* Navbar/Footer ছাড়া পেজ */}

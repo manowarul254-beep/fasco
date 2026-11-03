@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Container } from "../../components/ui";
-import PageHeader from "../../components/shared/Pageheader";
+import Pageheader from "../../components/shared/Pageheader";
 import ProductTile from "../../components/shared/ProductTile";
 import Pagination from "../../components/shared/Pagination";
-import FilterSidebar from "./component/FilterSidebar";
-import ShopToolbar from "./component/ShopToolbar";
+import FilterSidebar from "../Shop/component/FilterSidebar";
+import ShopToolbar from "../Shop/component/ShopToolbar";
 import useShopProducts from "../../hooks/useShopProducts";
-import { initialFilters } from "../../data/shopFilters";
+import { initialFilters } from "../../data//shopFilters";
 import ProductSpotlight from "../../components/shared/ProductSpotlight";
 import Features from "../../components/shared/Features";
 import Gallery from "../../components/shared/Gallery";
@@ -42,7 +42,7 @@ const Shop = () => {
 
   return (
     <>
-      <PageHeader title="Fashion" crumbs={[{ label: "Home", to: "/" }, { label: "Fashion" }]} />
+      <Pageheader title="Fashion" crumbs={[{ label: "Home", to: "/" }, { label: "Fashion" }]} />
 
       <Container as="section" className="pb-20">
         <button

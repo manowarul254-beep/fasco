@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import { Container } from "../ui";
 
 /**
- * PageHeader: পেজের শিরোনাম + ব্রেডক্রাম (Shop, Cart, Checkout... সব পেজে একই)
+ * Pageheader: পেজের শিরোনাম + ব্রেডক্রাম (Shop, Cart, Checkout... সব পেজে একই)
  * Props:
  *  - title  : "Fashion"
  *  - crumbs : [{ label: "Home", to: "/" }, { label: "Fashion" }]  (শেষটায় to লাগবে না)
  */
-const PageHeader = ({ title, crumbs = [] }) => {
+const Pageheader = ({ title, crumbs = [] }) => {
   return (
     <Container as="section" className="py-10 text-center lg:py-14">
       <h1 className="font-heading text-4xl font-bold text-muted lg:text-5xl">{title}</h1>
@@ -26,4 +26,4 @@ const PageHeader = ({ title, crumbs = [] }) => {
   );
 };
 
-export default PageHeader;
+export default Pageheader;
