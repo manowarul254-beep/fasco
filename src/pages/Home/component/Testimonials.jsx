@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
-import Container from "../../../components/ui/container";
-import SectionHeader from "../../../components/shared/Sectionheader";
+import { Container } from "../../../components/ui";
+import Sectionheader from "../../../components/shared/Sectionheader";
 
 import person1 from "../../../assets/testimonials2.png";
 import person2 from "../../../assets/testimonials2.png";
@@ -92,7 +92,7 @@ const Testimonials = () => {
   return (
     <section className="bg-[#FAFAFA] py-16 lg:py-24">
       <Container>
-        <SectionHeader
+        <Sectionheader
           title="This Is What Our Customers Say"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis"
         />

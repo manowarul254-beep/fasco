@@ -3,7 +3,7 @@ import { Container } from "../../../components/ui";
 import chanel from "../../../assets/chanel.png";
 import louisVuitton from "../../../assets/louis-vuitton.png";
 import prada from "../../../assets/prada.png";
-import calvinKlein from "../../../assets/calvinklein.png";
+import calvinKlein from "../../../assets/calvinKlein.png";
 import denim from "../../../assets/denim.png";
 
 const logos = [

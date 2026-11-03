@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { getFashionProducts, ACCESSORY_CATEGORIES } from "../data/shopApi";
+import { getFashionProducts, ACCESSORY_CATEGORIES } from "../data/Shopapi";
 
 const sorters = {
   best: (a, b) => b.rating - a.rating,
